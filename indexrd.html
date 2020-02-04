@@ -1,36 +1,141 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        console.log("*****PETSHOP DA RD*****")
-
-        var cachorro = {
-            nome:"azuk",
-            idade: 8,
-            raca: "vira-lata",
-            peso: 50.8,
-            cor: "caramelo",
-            dono: {
-            nome: "Tião",
-            idade: null
+        const EMPRESA = "**********PETSHOP DA RD**********"
+        console.log(EMPRESA)//constante sempre em letras grandes para melhor definir  
+        let pets = [
+            {
+                nome: "patuta",
+                idade: 8,
+                raca: "vira-lata",
+                tipo: "gato",
+                peso: 50.8,
+                cor: "caramelo",
+                dono: {
+                    nome: "luca",
+                    idade: null
+                },
+                vacinado: false,
+                servicos: ["banho", "tosa", "vacina"]
             },
-            vacinado: false,
-            servicos: ["banho", "tosa"]
-        }
-        function vacinar(cachorro){
+            {
+                nome: "akis",
+                idade: 8,
+                raca: "vira-lata",
+                tipo: "passaro",
+                peso: 50.8,
+                cor: "caramelo",
+                dono: {
+                    nome: "Tirão",
+                    idade: null
+                },
+                vacinado: false,
+                servicos: ["banho", "tosa", "vacina"]
+            },
+            {
+                nome: "tavok",
+                idade: 8,
+                raca: "vira-lata",
+                tipo: "cachorro",
+                peso: 50.8,
+                cor: "caramelo",
+                dono: {
+                    nome: "Tião",
+                    idade: null
+                },
+                vacinado: false,
+                servicos: ["banho", "tosa", "vacina"]
+            },
+            {
+                nome: "fauys",
+                idade: 8,
+                raca: "vira-lata",
+                tipo: "gato",
+                peso: 50.8,
+                cor: "caramelo",
+                dono: {
+                    nome: "Tirão",
+                    idade: null
+                },
+                vacinado: true,
+                servicos: ["banho", "tosa", "vacina"]
+            }
+        ]
+        // var cachorro = {
+        //     nome: "bazuk",
+        //     idade: 8,
+        //     raca: "vira-lata",
+        //     tipo: "cachorro",
+        //     peso: 50.8,
+        //     cor: "caramelo",
+        //     dono: {
+        //         nome: "Tião",
+        //         idade: null
+        //     },
+        //     vacinado: true,
+        //     servicos: ["banho", "tosa", "vacina"]
+        // }
+        const vacinar = pets => {// so tem um parametro entao nao precisa de parenteses
             //implementar a função
-            if (cachorro.vacinado) {
+            if (pets.vacinado) {
                 console.log("Este cachorro já está vacinado!!")
-            }else{
-                cachorro.vacinado = true
+            } else {
+                pets.vacinado = true
                 console.log("Vacina aplicada com sucesso!")
             }
         }
+        const adicionarPet = (nome, idade, raca, tipo, peso, cor, dono, servicos, vacinado) => {
+
+            const NOVOPET = {
+                nome: nome,
+                idade: idade,
+                raca: raca,
+                tipo: tipo,//posso colocar tbm somente os parametros na nova variavel e depois colocar  para o novo objeto
+                peso: peso,
+                cor: cor,
+                dono: {
+                    nome: null,
+                    idade: null
+                },
+                servicos: servicos,
+                vacinado: vacinado
+            }
+            pets.push(NOVOPET)
+            console.log("Pet adicionado")
+        }
+        const exibirPet = () => {//funcao expressa optar por ele pela performance trocando o Function pelo "=>" tornando ela em uma arrow function
+            pets.forEach((pet) => {//neste caso usando o forEach nao é necessario passar o index commo parametro
+                console.log("-------------------------------------------")
+                console.log("Nome do pet: " + pet.nome)
+                console.log("Tipo do pet: " + pet.tipo)
+                console.log(pet.vacinado ? "Pet vacinado!" : "Esse pet ainda não foi vacinado!!")
+            })
+        }
+        // const filtrarGatos = () => {
+        //     let petsTipoGato = []
+        //     pets.forEach((pet) => {
+        //         if (pet.tipo == "gato") {
+        //             petsTipoGato.push(pet)
+        //         }
+        //     })
+        //     return petsTipoGato
+        // }
+        const vacinaGeral = () => {
+            let vacinaPet = pets.map((pet) => {//podemos dar um return aqui em pets porem tenho que tirar o "let vacinaPet"
+                pet.vacinado = true
+                return pet
+            })
+            return vacinaPet//podemos subir este return para a linha 132 substituindo "let vacinaPet"
+        }
     </script>
 </body>
+
 </html>
